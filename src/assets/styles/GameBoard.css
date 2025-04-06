@@ -1,0 +1,16 @@
+.game-board {
+  display: grid;
+  gap: 10px;
+  max-width: 80vw;
+}
+
+.play-again-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
