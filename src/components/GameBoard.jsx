@@ -25,7 +25,6 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onGameEnd, onRestart, onF
   const [cards, setCards] = useState(() => generateCardContent(pairCount));
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
-  const [pendingStats, setPendingStats] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [attempts, setAttempts] = useState(0);
   const [timeLeft, setTimeLeft] = useState(timeLimit === "∞" ? 0 : timeLimit);
@@ -124,11 +123,11 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onGameEnd, onRestart, onF
 
     const accuracy = attempts > 0 ? ((pairCount / attempts) * 100).toFixed(1) : 0;
     
-    setPendingStats({
+    onGameEnd({
       attempts,
       time: timeLeft,
       accuracy,
-    });
+    })
   };  
 
   const handleCardClick = (card) => {
