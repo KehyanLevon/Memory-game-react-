@@ -25,10 +25,6 @@ function App() {
     setGameKey(prev => prev + 1);
   };
 
-  const handleGameEnd = (data) => {
-    setStats(data);
-  };
-
   const confirmAndReset = (callback) => {
     if (gameStarted) {
       const confirmed = window.confirm("Changing will reset the current game. Continue?");
@@ -69,7 +65,7 @@ function App() {
         difficulty={difficulty}
         timeLimit={timeMode}
         moveLimit={moveLimit}
-        onGameEnd={handleGameEnd}
+        onSetStats={setStats}
         onRestart={resetGame}
         onFirstClick={() => setGameStarted(true)}
       />

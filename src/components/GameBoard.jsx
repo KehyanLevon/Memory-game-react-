@@ -18,7 +18,7 @@ function generateCardContent(pairCount) {
   return shuffle(pairs);
 }
 
-function GameBoard({ difficulty, timeLimit, moveLimit, onGameEnd, onRestart, onFirstClick }) {
+function GameBoard({ difficulty, timeLimit, moveLimit, onSetStats, onRestart, onFirstClick }) {
   const size = difficulty.size;
   const pairCount = (size * size) / 2;
 
@@ -123,7 +123,7 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onGameEnd, onRestart, onF
 
     const accuracy = attempts > 0 ? ((pairCount / attempts) * 100).toFixed(1) : 0;
     
-    onGameEnd({
+    onSetStats({
       attempts,
       time: timeLeft,
       accuracy,
