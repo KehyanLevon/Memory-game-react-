@@ -123,7 +123,7 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onSetStats, onRestart, on
     if (gameOver) return;
     setGameOver(true);
 
-    const accuracy = attempts > 0 ? (( matchedCount / pairCount) * 100).toFixed(1) : 0;
+    const accuracy = attempts > 0 ? (( matchedCount / attempts) * 100).toFixed(1) : 0;
     
     onSetStats({
       attempts,
