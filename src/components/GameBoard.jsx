@@ -23,6 +23,7 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onSetStats, onRestart, on
   const pairCount = (size * size) / 2;
 
   const [cards, setCards] = useState(() => generateCardContent(pairCount));
+  const [matchedCount, setMatchedCount] = useState(0)
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
   const [disabled, setDisabled] = useState(false);
@@ -62,6 +63,7 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onSetStats, onRestart, on
           card.emoji === cardA.emoji ? { ...card, matched: true } : card
         )
       );
+      setMatchedCount((prev) => prev + 1)
       clearSelection();
     } else {
       setTimeout(() => {
@@ -121,7 +123,7 @@ function GameBoard({ difficulty, timeLimit, moveLimit, onSetStats, onRestart, on
     if (gameOver) return;
     setGameOver(true);
 
-    const accuracy = attempts > 0 ? ((pairCount / attempts) * 100).toFixed(1) : 0;
+    const accuracy = attempts > 0 ? (( matchedCount / pairCount) * 100).toFixed(1) : 0;
     
     onSetStats({
       attempts,
