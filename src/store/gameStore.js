@@ -30,7 +30,6 @@ export const useGameStore = create(
       },
 
       setPlayerColor: (index, color) => {
-        console.log(color);
         const updated = structuredClone(get().players);
         updated[index].color = color;
         set({ players: updated });
